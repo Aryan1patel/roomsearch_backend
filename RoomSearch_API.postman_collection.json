@@ -1,0 +1,268 @@
+{
+    "info": {
+        "name": "RoomSearch API",
+        "description": "API endpoints for RoomSearch hostel room swap application",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Health Check",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/health",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "health"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Create Room Swap Listing",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"email\": \"student@bu.edu\",\n  \"name\": \"John Doe\",\n  \"phoneNo\": \"1234567890\",\n  \"currentHostelBlock\": \"c1\",\n  \"currentFloor\": \"3\",\n  \"desiredHostelBlock\": \"c2\",\n  \"desiredFloor\": \"5\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/users",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "users"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get All Listings",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/api/users",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "users"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Filter Listings by Block",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/api/users?block=c1",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "users"
+                    ],
+                    "query": [
+                        {
+                            "key": "block",
+                            "value": "c1"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Filter Listings by Block and Floor",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/api/users?block=c2&floor=5",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "users"
+                    ],
+                    "query": [
+                        {
+                            "key": "block",
+                            "value": "c2"
+                        },
+                        {
+                            "key": "floor",
+                            "value": "5"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Single Listing",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/api/users/:id",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "users",
+                        ":id"
+                    ],
+                    "variable": [
+                        {
+                            "key": "id",
+                            "value": "USER_ID_HERE"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Find Perfect Matches",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/api/users/matches/:userId",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "users",
+                        "matches",
+                        ":userId"
+                    ],
+                    "variable": [
+                        {
+                            "key": "userId",
+                            "value": "USER_ID_HERE"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Search Potential Matches",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/api/users/search/potential-matches?currentBlock=c1&currentFloor=3&desiredBlock=c2&desiredFloor=5",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "users",
+                        "search",
+                        "potential-matches"
+                    ],
+                    "query": [
+                        {
+                            "key": "currentBlock",
+                            "value": "c1"
+                        },
+                        {
+                            "key": "currentFloor",
+                            "value": "3"
+                        },
+                        {
+                            "key": "desiredBlock",
+                            "value": "c2"
+                        },
+                        {
+                            "key": "desiredFloor",
+                            "value": "5"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Update Listing",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"name\": \"John Updated\",\n  \"phoneNo\": \"9999999999\",\n  \"currentHostelBlock\": \"c3\",\n  \"currentFloor\": \"4\",\n  \"desiredHostelBlock\": \"c4\",\n  \"desiredFloor\": \"6\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/users/:id",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "users",
+                        ":id"
+                    ],
+                    "variable": [
+                        {
+                            "key": "id",
+                            "value": "USER_ID_HERE"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Delete Listing",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/api/users/:id",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "users",
+                        ":id"
+                    ],
+                    "variable": [
+                        {
+                            "key": "id",
+                            "value": "USER_ID_HERE"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:5000",
+            "type": "string"
+        }
+    ]
+}
